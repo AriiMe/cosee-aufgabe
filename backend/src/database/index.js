@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const User = require("./users");
 const Post = require("./posts");
 const Like = require("./likes");
+const Comment = require("./comments");
 
 const sequelize = new Sequelize(
   process.env.PGDATABASE,
@@ -24,6 +25,7 @@ const models = {
   User: User(sequelize, DataTypes),
   Post: Post(sequelize, DataTypes),
   Like: Like(sequelize, DataTypes),
+  Comment: Comment(sequelize, DataTypes),
 };
 
 Object.keys(models).forEach((modelName) => {
