@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const mainRouter = require('./routes');
-const passport = require('passport');
 const cookieParser = require('cookie-parser');
 
 dotenv.config();
@@ -36,7 +35,7 @@ server.use(cookieParser());
 server.use(express.json());
 server.use("/idkyet", mainRouter)
 
-database.sequelize.sync({force: false}).then(() => {
+database.sequelize.sync({force: true}).then(() => {
     server.listen(port, () => {
         console.log("server listening to", port)
     });

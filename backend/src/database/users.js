@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         primaryKey: true,
-        autoIncrement: true,
+        
       },
       username: {
         type: DataTypes.STRING,
@@ -52,9 +52,9 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = (models) => {
-    User.hasMany(models.Posts);
+    User.hasMany(models.Post);
     User.hasMany(models.Comment);
-    User.hasMany(models.Likes);
+    User.hasMany(models.Like);
   };
   return User;
 };

@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const {Pool} = require('pg');
 const bcrypt = require("bcrypt");
 const User = require("./users");
 const Post = require("./posts");
@@ -12,14 +13,19 @@ const sequelize = new Sequelize(
   {
     host: process.env.PGHOST,
     dialect: "postgres",
+    protocol: "postgres",
     dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
+      // connectionString: process.env.DATABASE_URL,
+      // ssl: true,
     },
   }
 );
+
+// const sequelize = new Pool({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: true,
+// });
+
 
 const models = {
   User: User(sequelize, DataTypes),

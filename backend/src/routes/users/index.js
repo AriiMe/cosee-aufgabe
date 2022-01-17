@@ -1,5 +1,5 @@
 const User = require("../../database").User;
-const Post = require("../../db").Post;
+const Post = require("../../database").Post;
 
 const multer = require("multer");
 //const passport = require("passport");
