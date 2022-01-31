@@ -1,2 +1,4 @@
 frontend/node_modules/
 frontend/node_modules
+backendDjango/backendDjango/base/posts.py
+backendDjango/base/posts.py
