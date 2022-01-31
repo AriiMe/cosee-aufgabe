@@ -13,7 +13,7 @@ function App() {
       <main className="py-3">
         <Container>
           <Route path="/" component={HomePage} exact/>
-          <Route path="/post/:id" component={PostPage}/>
+          <Route path="/posts/:id" component={PostPage}/>
         </Container>
       </main>
     </Router>

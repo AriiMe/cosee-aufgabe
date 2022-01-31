@@ -1,10 +1,23 @@
-import React from 'react'
-import { Row, Col } from 'react-bootstrap'
-import Post from '../components/Post'
+import React, {useState, useEffect} from 'react';
+import { Row, Col } from 'react-bootstrap';
+import Post from '../components/Post';
+import axios from 'axios';
 
-import posts from '../posts.js'
 
 function HomePage() {
+    const [posts, setPosts] = useState([])
+
+    useEffect(() =>{
+
+       async function fetchPosts(){
+            const {data} = await axios.get('/api/posts/');
+            setPosts(data);
+        };
+
+        fetchPosts();
+
+      
+    }, []);
     return (
         <div>
             <h1>Latest Posts</h1>

@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom'
 function Post({ post }) {
   return (
     <Card className="my-3 p-3 rounded">
-      <Link to={`/post/${post._id}`}>
+      <Link to={`/posts/${post._id}`}>
         <Card.Img src={post.imgurl} />
       </Link>
 
       <Card.Body>
-        <Link to={`/post/${post.id}`}>
+        <Link to={`/posts/${post.id}`}>
           <Card.Title as="div">
-            <strong>{post.title}</strong>
+            <strong>{post.name}</strong>
           </Card.Title>
         </Link>
         <Card.Text as="div">
