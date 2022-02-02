@@ -18,7 +18,7 @@ function Header() {
                 <i className="fas fa-user"></i> Login
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/save">
+              <Nav.Link as={Link} to="/saved">
                 <i className="fas fa-save"></i> Saved
               </Nav.Link>
             </Nav>

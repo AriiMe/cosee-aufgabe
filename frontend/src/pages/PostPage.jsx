@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Row, Col, Image, ListGroup, Button, Card } from "react-bootstrap";
+import { Row, Col, Image, ListGroup, Button, Card, Form } from "react-bootstrap";
 import axios from "axios";
 import Rating from "../components/Rating";
 import { listPostDetails } from "../actions/postActions";
 
-function PostPage({ match }) {
+function PostPage({ match, history }) {
+  const [save, setSave] = useState(false)
   const dispatch = useDispatch();
   const postDetails = useSelector((state) => state.postDetails);
   const { loading, error, post } = postDetails;
@@ -15,6 +16,10 @@ function PostPage({ match }) {
     dispatch(listPostDetails(match.params.id));
   }, [dispatch, match]);
 
+  const savedHandler = () =>{
+    setSave(true);
+    history.push(`/saved/${match.params.id}`)
+  }
   return (
     <div>
       <Link to="/" className="btn btn-light my-3">
@@ -46,6 +51,7 @@ function PostPage({ match }) {
                   color={"#f8e825"}
                 />
               </ListGroup.Item>
+              
             </ListGroup>
             <ListGroup>
               <ListGroup.Item>
@@ -55,6 +61,19 @@ function PostPage({ match }) {
                     <strong>{post.tags}</strong>
                   </Col>
                 </Row>
+              </ListGroup.Item>
+            </ListGroup>
+            <ListGroup>
+            <ListGroup.Item>
+                <Button
+                onClick={savedHandler}
+                className="btn-block"
+                disabled={save}
+                type="button"
+                style={{width: '100%'}}
+                >
+                  Save
+                  </Button>
               </ListGroup.Item>
             </ListGroup>
           </Col>

@@ -5,6 +5,7 @@ import Header from "./components/Header";
 
 import HomePage from "./pages/HomePage";
 import PostPage from "./pages/PostPage";
+import SavedPage from "./pages/SavedPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Container>
           <Route path="/" component={HomePage} exact/>
           <Route path="/posts/:id" component={PostPage}/>
+          <Route path="/saved/:id" component={SavedPage}/>
         </Container>
       </main>
     </Router>
