@@ -4,19 +4,29 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { postReducer, postDetailsReducer } from "./reducers/postReducers";
 import { savedReducer } from "./reducers/savedReducers";
+import { userLoginReducer } from './reducers/userReducers';
+;
+
 
 const reducer = combineReducers({
   postList: postReducer,
   postDetails: postDetailsReducer,
   save: savedReducer,
+  userLogin: userLoginReducer,
 });
 
 const savedItemsFromStorage = localStorage.getItem("savedItems")
   ? JSON.parse(localStorage.getItem("savedItems"))
   : [];
 
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
 const initialState = {
-    save: {savedItems: savedItemsFromStorage}
+    save: {savedItems: savedItemsFromStorage},
+    userLogin: {userInfo: userInfoFromStorage},
+
 };
 
 const middleware = [thunk];

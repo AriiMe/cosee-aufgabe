@@ -23,8 +23,8 @@ export const listPosts = () => async (dispatch) => {
     dispatch({
       type: POST_FAIL,
       payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
+        error.response && error.response.data.detail
+          ? error.response.data.detail
           : error.message,
     });
   }
@@ -45,8 +45,8 @@ export const listPostDetails = (id) => async (dispatch) => {
       dispatch({
         type: POST_DETAILS_FAIL,
         payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
+          error.response && error.response.data.detail
+            ? error.response.data.detail
             : error.message,
       });
     }
