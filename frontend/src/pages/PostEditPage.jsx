@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Form, Button} from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import { listPostDetails, updatePost } from "../actions/postActions";
@@ -120,9 +120,8 @@ function PostEditPage({ match, history }) {
 
             <Form.Group controlId="imgurl">
               <Form.Label>Image</Form.Label>
-              
 
-<Form.Control type="file"  onChange={uploadFileHandler}/>
+              <Form.Control type="file" onChange={uploadFileHandler} />
 
               {uploading && <h2>Loading Please Wait...</h2>}
             </Form.Group>
