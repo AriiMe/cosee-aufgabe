@@ -4,8 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { postReducer, postDetailsReducer } from "./reducers/postReducers";
 import { savedReducer } from "./reducers/savedReducers";
-import { userLoginReducer } from './reducers/userReducers';
-;
+import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer } from './reducers/userReducers';
 
 
 const reducer = combineReducers({
@@ -13,6 +12,9 @@ const reducer = combineReducers({
   postDetails: postDetailsReducer,
   save: savedReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
 });
 
 const savedItemsFromStorage = localStorage.getItem("savedItems")
