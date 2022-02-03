@@ -6,7 +6,6 @@ from rest_framework.response import Response
 
 from django.contrib.auth.models import User
 from base.models import Post
-from base.posts import posts
 from base.serializers import PostSerializer, UserSerializer, UserSerializerWithToken
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
