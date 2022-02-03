@@ -12,6 +12,10 @@ import {
   POST_UPDATE_REQUEST,
   POST_UPDATE_SUCCESS,
   POST_UPDATE_FAIL,
+
+  POST_CREATE_REVIEW_REQUEST,
+  POST_CREATE_REVIEW_SUCCESS,
+  POST_CREATE_REVIEW_FAIL,
 } from "../constants/postConstants";
 
 export const listPosts = () => async (dispatch) => {
@@ -124,6 +128,45 @@ export const updatePost = (post) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: POST_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const createPostReview = (postId, review) => async (dispatch, getState) => {
+  try {
+    dispatch({ 
+      type: POST_CREATE_REVIEW_REQUEST
+     });
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.post(
+      `/api/posts/${postId}/reviews/`,
+      review,
+      config
+    )
+
+    dispatch({
+      type: POST_CREATE_REVIEW_SUCCESS,
+      payload: data,
+    })
+
+  } catch (error) {
+    dispatch({
+      type: POST_CREATE_REVIEW_FAIL,
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail

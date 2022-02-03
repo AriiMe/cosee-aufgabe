@@ -13,6 +13,11 @@ import {
   POST_UPDATE_SUCCESS,
   POST_UPDATE_FAIL,
   POST_UPDATE_RESET,
+
+  POST_CREATE_REVIEW_REQUEST,
+  POST_CREATE_REVIEW_SUCCESS,
+  POST_CREATE_REVIEW_FAIL,
+  POST_CREATE_REVIEW_RESET,
 } from "../constants/postConstants";
 
 export const postReducer = (state = { posts: [] }, action) => {
@@ -82,6 +87,25 @@ export const postUpdateReducer = (state = { post: {} }, action) => {
 
     case POST_UPDATE_RESET:
       return { post: {} };
+
+    default:
+      return state;
+  }
+};
+
+export const postReviewCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case POST_CREATE_REVIEW_REQUEST:
+      return { loading: true };
+
+    case POST_CREATE_REVIEW_SUCCESS:
+      return { loading: false, success: true};
+
+    case POST_CREATE_REVIEW_FAIL:
+      return { loading: false, error: action.payload };
+
+    case POST_CREATE_REVIEW_RESET:
+      return {};
 
     default:
       return state;
